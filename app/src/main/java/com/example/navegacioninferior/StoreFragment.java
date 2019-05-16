@@ -167,12 +167,13 @@ public class StoreFragment extends Fragment {
 
          public class MyViewHolder extends RecyclerView.ViewHolder{
 
-            public TextView name,price;
+            public TextView price;
+            public TextView titulo;
             public ImageView thumbnail;
 
             public MyViewHolder(View view){
                 super(view);
-                name=view.findViewById(R.id.title);
+                titulo=view.findViewById(R.id.titulo);
                 price=view.findViewById(R.id.price);
                 thumbnail=view.findViewById(R.id.thumbnail);
             }
@@ -189,8 +190,9 @@ public class StoreFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
             final movie movie = movieList.get(position);
-            holder.name.setText(movie.getTitle());
-            holder.price.setText(movie.getTitle());
+
+            holder.price.setText(movie.getPrice());
+            holder.titulo.setText(movie.getTitle());
 
             Glide.with(context)
                     .load(movie.getImage())

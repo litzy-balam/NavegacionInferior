@@ -3,6 +3,7 @@ package com.example.navegacioninferior;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //View v = getLayoutInflater().inflate(R.menu.navegacion,null);
         //toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        //BottomNavigationView navigation=(BottomNavigationView)findViewById(R.id.navigation);
+        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
 
         toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -41,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         });*/
         BottomNavigationView navigation=(BottomNavigationView)findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        CoordinatorLayout.LayoutParams layoutParams=(CoordinatorLayout.LayoutParams)navigation.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
         //se agrega el load
         toolbar.setTitle("Shop");
         loadFragment(new StoreFragment());
